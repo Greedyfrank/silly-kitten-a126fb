@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kryos Security Group | Physical Security Consulting</title>
   <meta name="description" content="Physical security consulting for enterprise clients. Based in DFW, serving clients nationwide.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230e0e10'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='42' fill='%23c9a961'%3EK%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 100'%3E%3Crect width='110' height='100' fill='%230e0e10'/%3E%3Cpolygon points='55,8 98,30 98,70 55,92 12,70 12,30' fill='none' stroke='%23c9a961' stroke-width='5' stroke-linejoin='miter'/%3E%3Ctext x='55' y='68' text-anchor='middle' font-family='Helvetica,Arial,sans-serif' font-weight='800' font-size='52' fill='%23c9a961'%3EK%3C/text%3E%3C/svg%3E">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -26,43 +26,28 @@
     /* Logo */
     .logo {
       display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .logo-mark { display: block; }
+    .logo-text {
+      display: flex;
       flex-direction: column;
-      line-height: 1;
+      line-height: 1.1;
     }
-    .logo-mark {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.6rem;
+    .logo-name {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 1.05rem;
       font-weight: 700;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.18em;
       color: #e8e8ea;
-      position: relative;
-      padding: 0 0.9rem;
-    }
-    .logo-mark::before,
-    .logo-mark::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 8px;
-      border-color: #c9a961;
-      border-style: solid;
-    }
-    .logo-mark::before {
-      left: 0;
-      border-width: 2px 0 2px 2px;
-    }
-    .logo-mark::after {
-      right: 0;
-      border-width: 2px 2px 2px 0;
     }
     .logo-sub {
       font-size: 0.65rem;
       font-weight: 600;
-      letter-spacing: 0.32em;
+      letter-spacing: 0.28em;
       color: #c9a961;
-      margin-top: 0.6rem;
-      text-align: center;
+      margin-top: 0.25rem;
       text-transform: uppercase;
     }
 
@@ -138,8 +123,16 @@
   <header>
     <div class="wrap">
       <div class="logo">
-        <span class="logo-mark">KRYOS</span>
-        <span class="logo-sub">Security Group</span>
+        <svg class="logo-mark" width="48" height="44" viewBox="0 0 110 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polygon points="55,4 100,28 100,72 55,96 10,72 10,28"
+                   fill="none" stroke="#c9a961" stroke-width="3" stroke-linejoin="miter"/>
+          <text x="55" y="66" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif"
+                font-weight="800" font-size="48" fill="#c9a961" letter-spacing="-2">K</text>
+        </svg>
+        <span class="logo-text">
+          <span class="logo-name">KRYOS</span>
+          <span class="logo-sub">Security Group</span>
+        </span>
       </div>
     </div>
   </header>
