@@ -1,0 +1,17 @@
+[[redirects]]
+  from = "http://kryossecuritygroup.com/*"
+  to = "https://kryossecuritygroup.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.kryossecuritygroup.com/*"
+  to = "https://kryossecuritygroup.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.kryossecuritygroup.com/*"
+  to = "https://kryossecuritygroup.com/:splat"
+  status = 301
+  force = true
