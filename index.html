@@ -5,163 +5,440 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kryos Security Group | Physical Security Consulting</title>
   <meta name="description" content="Physical security consulting for enterprise clients. Based in DFW, serving clients nationwide.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 100'%3E%3Crect width='110' height='100' fill='%230e0e10'/%3E%3Cpolygon points='55,8 98,30 98,70 55,92 12,70 12,30' fill='none' stroke='%23c9a961' stroke-width='5' stroke-linejoin='miter'/%3E%3Ctext x='55' y='68' text-anchor='middle' font-family='Helvetica,Arial,sans-serif' font-weight='800' font-size='52' fill='%23c9a961'%3EK%3C/text%3E%3C/svg%3E">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 100'%3E%3Crect width='110' height='100' fill='%23080a08'/%3E%3Cpolygon points='55,8 98,30 98,70 55,92 12,70 12,30' fill='none' stroke='%2339ff14' stroke-width='4' stroke-linejoin='miter'/%3E%3Ctext x='55' y='68' text-anchor='middle' font-family='monospace' font-weight='800' font-size='52' fill='%2339ff14'%3EK%3C/text%3E%3C/svg%3E">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --neon:    #39ff14;
+      --gold:    #c9a961;
+      --cyan:    #00e5ff;
+      --bg:      #080a08;
+      --bg2:     #0e120e;
+      --bg3:     #131a13;
+      --border:  #1e2e1e;
+      --text:    #b8cfb8;
+      --dim:     #5a7a5a;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #0e0e10;
-      color: #e8e8ea;
+      font-family: "Courier New", Courier, monospace;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
     }
+
+    /* ── Grid + scanline overlay ── */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(57,255,20,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57,255,20,.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,.18) 2px,
+        rgba(0,0,0,.18) 4px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    header, main, footer { position: relative; z-index: 2; }
+
+    /* ── Header ── */
     header {
-      padding: 2rem 1.5rem;
-      border-bottom: 1px solid #1f1f23;
+      padding: 1.75rem 1.5rem;
+      border-bottom: 1px solid var(--neon);
+      box-shadow: 0 0 18px rgba(57,255,20,.15);
+      background: var(--bg2);
     }
     .wrap { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
 
-    /* Logo */
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* ── Logo ── */
     .logo {
       display: inline-flex;
       align-items: center;
-      gap: 0.9rem;
+      gap: 1rem;
+      text-decoration: none;
     }
-    .logo-mark { display: block; }
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
+    .logo-mark { display: block; filter: drop-shadow(0 0 8px var(--neon)); }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
     .logo-name {
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: 0.18em;
-      color: #e8e8ea;
+      letter-spacing: 0.28em;
+      color: var(--neon);
+      text-shadow: 0 0 12px var(--neon);
     }
     .logo-sub {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 600;
-      letter-spacing: 0.28em;
-      color: #c9a961;
-      margin-top: 0.25rem;
+      letter-spacing: 0.38em;
+      color: var(--gold);
+      margin-top: 0.2rem;
       text-transform: uppercase;
     }
 
-    main { flex: 1; padding: 5rem 0; }
-    h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 1.25rem;
-      letter-spacing: -0.02em;
-    }
-    .tagline {
-      font-size: 1.25rem;
-      color: #a0a0a8;
-      max-width: 640px;
-      margin-bottom: 3rem;
-    }
-    h2 {
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
+    /* ── Status badge ── */
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--neon);
+      border: 1px solid var(--neon);
+      padding: 0.35rem 0.75rem;
       text-transform: uppercase;
-      color: #c9a961;
-      margin-bottom: 1.25rem;
+      box-shadow: 0 0 8px rgba(57,255,20,.2);
     }
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-      margin-bottom: 4rem;
+    .pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--neon);
+      box-shadow: 0 0 6px var(--neon);
+      animation: pulse 1.8s ease-in-out infinite;
     }
-    .service {
-      background: #17171a;
-      border: 1px solid #24242a;
-      border-radius: 6px;
-      padding: 1.25rem 1.5rem;
-      font-weight: 500;
-      transition: border-color 0.2s, transform 0.2s;
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .35; transform: scale(.7); }
     }
-    .service:hover {
-      border-color: #c9a961;
-      transform: translateY(-2px);
+
+    /* ── Divider strip ── */
+    .strip {
+      background: var(--bg3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0.4rem 0;
+      overflow: hidden;
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      color: var(--dim);
+      white-space: nowrap;
     }
-    .contact {
-      border-top: 1px solid #1f1f23;
-      padding-top: 3rem;
-    }
-    .contact a {
-      color: #e8e8ea;
-      text-decoration: none;
-      border-bottom: 1px solid #c9a961;
-      padding-bottom: 2px;
-      transition: color 0.2s;
-    }
-    .contact a:hover { color: #c9a961; }
-    .contact p { margin-bottom: 0.75rem; font-size: 1.05rem; }
-    .label {
+    .strip-inner {
       display: inline-block;
-      width: 80px;
-      color: #7a7a82;
-      font-size: 0.9rem;
+      animation: marquee 28s linear infinite;
     }
-    footer {
-      padding: 2rem 1.5rem;
-      border-top: 1px solid #1f1f23;
-      color: #6a6a72;
+    @keyframes marquee {
+      from { transform: translateX(100vw); }
+      to   { transform: translateX(-100%); }
+    }
+
+    /* ── Main ── */
+    main { flex: 1; padding: 4rem 0 5rem; }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--neon);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-label::before {
+      content: "//";
+      color: var(--dim);
+    }
+    .section-label::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    /* ── Hero ── */
+    .hero { margin-bottom: 4rem; }
+    .hero h1 {
+      font-size: clamp(1.75rem, 4.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+      color: #e8eee8;
+    }
+    .hero h1 span { color: var(--neon); text-shadow: 0 0 14px var(--neon); }
+    .hero .tagline {
+      font-size: 1rem;
+      color: var(--dim);
+      max-width: 600px;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    /* ── Capability grid (services) ── */
+    .capabilities { margin-bottom: 4rem; }
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .cap-item {
+      background: var(--bg2);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      transition: background 0.2s;
+      cursor: default;
+    }
+    .cap-item:hover {
+      background: var(--bg3);
+    }
+    .cap-item:hover .cap-icon { color: var(--neon); text-shadow: 0 0 10px var(--neon); }
+    .cap-icon {
+      color: var(--gold);
       font-size: 0.85rem;
-      text-align: center;
+      margin-top: 0.1rem;
+      transition: color 0.2s, text-shadow 0.2s;
+      user-select: none;
+    }
+    .cap-text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text);
+    }
+
+    /* ── Contact panel ── */
+    .contact-panel {
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-panel::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(to bottom, var(--neon), transparent);
+    }
+    .contact-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.95rem;
+    }
+    .contact-row:last-child { margin-bottom: 0; }
+    .c-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--dim);
+      min-width: 72px;
+    }
+    .c-val a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .c-val a:hover { color: var(--neon); border-color: var(--neon); }
+    .c-val span { color: var(--text); }
+
+    /* ── Corner accent ── */
+    .corner {
+      position: absolute;
+      top: 0; right: 0;
+      width: 48px; height: 48px;
+      overflow: hidden;
+    }
+    .corner::before {
+      content: "";
+      position: absolute;
+      top: 0; right: 0;
+      width: 0; height: 0;
+      border-style: solid;
+      border-width: 0 48px 48px 0;
+      border-color: transparent var(--neon) transparent transparent;
+      opacity: .25;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--neon);
+      box-shadow: 0 0 18px rgba(57,255,20,.1);
+      background: var(--bg2);
+      padding: 1.25rem 1.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .footer-right { color: var(--border); }
+
+    /* ── Glitch on hover of logo ── */
+    .logo:hover .logo-name {
+      animation: glitch 0.4s steps(2, end) 1;
+    }
+    @keyframes glitch {
+      0%   { text-shadow: 2px 0 var(--cyan), -2px 0 var(--gold); }
+      25%  { text-shadow: -2px 0 var(--cyan), 2px 0 var(--gold); clip-path: inset(20% 0 40% 0); }
+      50%  { text-shadow: 2px 0 var(--cyan), -2px 0 var(--gold); clip-path: inset(60% 0 10% 0); }
+      75%  { text-shadow: -2px 0 var(--cyan), 2px 0 var(--gold); clip-path: inset(5% 0 70% 0); }
+      100% { text-shadow: 0 0 12px var(--neon); clip-path: none; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      .status-badge { display: none; }
+      .contact-panel { padding: 1.5rem 1.25rem; }
+      .footer-right { display: none; }
     }
   </style>
 </head>
 <body>
+
   <header>
     <div class="wrap">
-      <div class="logo">
-        <svg class="logo-mark" width="48" height="44" viewBox="0 0 110 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <polygon points="55,4 100,28 100,72 55,96 10,72 10,28"
-                   fill="none" stroke="#c9a961" stroke-width="3" stroke-linejoin="miter"/>
-          <text x="55" y="66" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif"
-                font-weight="800" font-size="48" fill="#c9a961" letter-spacing="-2">K</text>
-        </svg>
-        <span class="logo-text">
-          <span class="logo-name">KRYOS</span>
-          <span class="logo-sub">Security Group</span>
-        </span>
+      <div class="header-inner">
+        <a class="logo" href="/" aria-label="Kryos Security Group home">
+          <svg class="logo-mark" width="46" height="42" viewBox="0 0 110 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="55,4 100,28 100,72 55,96 10,72 10,28"
+                     fill="none" stroke="#39ff14" stroke-width="3.5" stroke-linejoin="miter"/>
+            <text x="55" y="66" text-anchor="middle" font-family="'Courier New',monospace"
+                  font-weight="800" font-size="46" fill="#39ff14" letter-spacing="-2">K</text>
+          </svg>
+          <span class="logo-text">
+            <span class="logo-name">KRYOS</span>
+            <span class="logo-sub">Security Group</span>
+          </span>
+        </a>
+        <div class="status-badge" aria-label="System online">
+          <span class="pulse" aria-hidden="true"></span>
+          SYSTEM ONLINE
+        </div>
       </div>
     </div>
   </header>
 
+  <div class="strip" aria-hidden="true">
+    <span class="strip-inner">
+      &nbsp;&nbsp;&#9632;&nbsp;&nbsp;KRYOS SECURITY GROUP &nbsp;&nbsp;&#9632;&nbsp;&nbsp; PHYSICAL SECURITY CONSULTING &nbsp;&nbsp;&#9632;&nbsp;&nbsp; DFW · NATIONWIDE &nbsp;&nbsp;&#9632;&nbsp;&nbsp; AUTHORIZED PERSONNEL ONLY &nbsp;&nbsp;&#9632;&nbsp;&nbsp; THREAT ASSESSMENT · ACCESS CONTROL · EXECUTIVE PROTECTION &nbsp;&nbsp;&#9632;&nbsp;&nbsp;
+    </span>
+  </div>
+
   <main>
     <div class="wrap">
-      <h1>Physical security consulting for enterprise clients.</h1>
-      <p class="tagline">Strategic guidance, assessments, and program design for organizations that take protection seriously. Based in DFW, serving clients nationwide.</p>
 
-      <h2>Services</h2>
-      <div class="services">
-        <div class="service">Threat &amp; Vulnerability Assessments</div>
-        <div class="service">Access Control Design</div>
-        <div class="service">Executive Protection Planning</div>
-        <div class="service">Security Program Development</div>
-        <div class="service">Incident Response Planning</div>
-      </div>
+      <section class="hero" aria-labelledby="hero-heading">
+        <p class="section-label" aria-hidden="true">MISSION BRIEF</p>
+        <h1 id="hero-heading">
+          Physical security <span>consulting</span><br>for enterprise clients.
+        </h1>
+        <p class="tagline">
+          Strategic guidance, threat assessments, and program design for organizations that take protection seriously.
+          Based in DFW — serving clients nationwide.
+        </p>
+      </section>
 
-      <div class="contact">
-        <h2>Contact</h2>
-        <p><span class="label">Email</span><a href="mailto:paul@kryossecuritygroup.com">paul@kryossecuritygroup.com</a></p>
-        <p><span class="label">Phone</span><a href="tel:+14699961325">(469) 996-1325</a></p>
-        <p><span class="label">Location</span>DFW, Texas &middot; Nationwide engagements</p>
-      </div>
+      <section class="capabilities" aria-labelledby="cap-heading">
+        <p class="section-label" aria-hidden="true">CAPABILITIES</p>
+        <h2 id="cap-heading" class="sr-only">Services</h2>
+        <div class="cap-grid" role="list">
+          <div class="cap-item" role="listitem">
+            <span class="cap-icon" aria-hidden="true">[01]</span>
+            <span class="cap-text">Threat &amp; Vulnerability Assessments</span>
+          </div>
+          <div class="cap-item" role="listitem">
+            <span class="cap-icon" aria-hidden="true">[02]</span>
+            <span class="cap-text">Access Control Design</span>
+          </div>
+          <div class="cap-item" role="listitem">
+            <span class="cap-icon" aria-hidden="true">[03]</span>
+            <span class="cap-text">Executive Protection Planning</span>
+          </div>
+          <div class="cap-item" role="listitem">
+            <span class="cap-icon" aria-hidden="true">[04]</span>
+            <span class="cap-text">Security Program Development</span>
+          </div>
+          <div class="cap-item" role="listitem">
+            <span class="cap-icon" aria-hidden="true">[05]</span>
+            <span class="cap-text">Incident Response Planning</span>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="contact-heading">
+        <p class="section-label" aria-hidden="true">SECURE CONTACT</p>
+        <h2 id="contact-heading" class="sr-only">Contact</h2>
+        <div class="contact-panel">
+          <div class="corner" aria-hidden="true"></div>
+          <div class="contact-row">
+            <span class="c-label">Email</span>
+            <span class="c-val"><a href="mailto:info@kryossecuritygroup.com">info@kryossecuritygroup.com</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="c-label">Location</span>
+            <span class="c-val"><span>DFW, Texas &middot; Nationwide engagements</span></span>
+          </div>
+        </div>
+      </section>
+
     </div>
   </main>
 
   <footer>
-    <div class="wrap">&copy; 2026 Kryos Security Group</div>
+    <div class="wrap">
+      <div class="footer-inner">
+        <span>&copy; 2026 Kryos Security Group &mdash; All rights reserved</span>
+        <span class="footer-right">KSG-SITE-v2 // SECURE</span>
+      </div>
+    </div>
   </footer>
+
+  <style>
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+  </style>
+
 </body>
 </html>
