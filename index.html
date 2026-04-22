@@ -324,11 +324,97 @@
       100% { text-shadow: 0 0 12px var(--neon); clip-path: none; }
     }
 
+    /* ── Deployed platforms ── */
+    .platforms { margin-bottom: 4rem; }
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .platform-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .platform-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(57,255,20,.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .platform-card:hover {
+      border-color: var(--neon);
+      box-shadow: 0 0 16px rgba(57,255,20,.15);
+    }
+    .platform-card:hover .pf-name { color: var(--neon); text-shadow: 0 0 10px var(--neon); }
+    .platform-card:hover .pf-arrow { opacity: 1; transform: translateX(0); }
+    .pf-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .pf-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--neon);
+      box-shadow: 0 0 5px var(--neon);
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+    .pf-id {
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      color: var(--dim);
+    }
+    .pf-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      transition: color 0.2s, text-shadow 0.2s;
+      text-transform: uppercase;
+    }
+    .pf-url {
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .pf-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.25rem;
+    }
+    .pf-status {
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      color: var(--neon);
+      text-transform: uppercase;
+    }
+    .pf-arrow {
+      font-size: 0.75rem;
+      color: var(--neon);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 520px) {
       .status-badge { display: none; }
       .contact-panel { padding: 1.5rem 1.25rem; }
       .footer-right { display: none; }
+      .platform-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -401,6 +487,79 @@
             <span class="cap-icon" aria-hidden="true">[05]</span>
             <span class="cap-text">Incident Response Planning</span>
           </div>
+        </div>
+      </section>
+
+      <section class="platforms" aria-labelledby="platforms-heading">
+        <p class="section-label" aria-hidden="true">DEPLOYED PLATFORMS</p>
+        <h2 id="platforms-heading" class="sr-only">Deployed Applications</h2>
+        <div class="platform-grid">
+
+          <a class="platform-card" href="https://iron-vault-guard.base44.app" target="_blank" rel="noopener noreferrer">
+            <div class="pf-top">
+              <span class="pf-dot" aria-hidden="true"></span>
+              <span class="pf-id">KSG-APP-01</span>
+            </div>
+            <span class="pf-name">Iron Vault Guard</span>
+            <span class="pf-url">iron-vault-guard.base44.app</span>
+            <div class="pf-footer">
+              <span class="pf-status">&#9632; ONLINE</span>
+              <span class="pf-arrow" aria-hidden="true">&#8594;</span>
+            </div>
+          </a>
+
+          <a class="platform-card" href="https://m4000-logic-link.base44.app" target="_blank" rel="noopener noreferrer">
+            <div class="pf-top">
+              <span class="pf-dot" aria-hidden="true"></span>
+              <span class="pf-id">KSG-APP-02</span>
+            </div>
+            <span class="pf-name">M4000 Logic Link</span>
+            <span class="pf-url">m4000-logic-link.base44.app</span>
+            <div class="pf-footer">
+              <span class="pf-status">&#9632; ONLINE</span>
+              <span class="pf-arrow" aria-hidden="true">&#8594;</span>
+            </div>
+          </a>
+
+          <a class="platform-card" href="https://dork-master-859e4f19.base44.app" target="_blank" rel="noopener noreferrer">
+            <div class="pf-top">
+              <span class="pf-dot" aria-hidden="true"></span>
+              <span class="pf-id">KSG-APP-03</span>
+            </div>
+            <span class="pf-name">Dork Master</span>
+            <span class="pf-url">dork-master-859e4f19.base44.app</span>
+            <div class="pf-footer">
+              <span class="pf-status">&#9632; ONLINE</span>
+              <span class="pf-arrow" aria-hidden="true">&#8594;</span>
+            </div>
+          </a>
+
+          <a class="platform-card" href="https://secure-vault-1138f6e0.base44.app" target="_blank" rel="noopener noreferrer">
+            <div class="pf-top">
+              <span class="pf-dot" aria-hidden="true"></span>
+              <span class="pf-id">KSG-APP-04</span>
+            </div>
+            <span class="pf-name">Secure Vault</span>
+            <span class="pf-url">secure-vault-1138f6e0.base44.app</span>
+            <div class="pf-footer">
+              <span class="pf-status">&#9632; ONLINE</span>
+              <span class="pf-arrow" aria-hidden="true">&#8594;</span>
+            </div>
+          </a>
+
+          <a class="platform-card" href="https://fieldforce.base44.app" target="_blank" rel="noopener noreferrer">
+            <div class="pf-top">
+              <span class="pf-dot" aria-hidden="true"></span>
+              <span class="pf-id">KSG-APP-05</span>
+            </div>
+            <span class="pf-name">FieldForce</span>
+            <span class="pf-url">fieldforce.base44.app</span>
+            <div class="pf-footer">
+              <span class="pf-status">&#9632; ONLINE</span>
+              <span class="pf-arrow" aria-hidden="true">&#8594;</span>
+            </div>
+          </a>
+
         </div>
       </section>
 
