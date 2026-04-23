@@ -15,3 +15,28 @@
   to = "https://kryossecuritygroup.com/:splat"
   status = 301
   force = true
+
+# kryosaccesssystems.com → primary domain
+[[redirects]]
+  from = "https://kryosaccesssystems.com/*"
+  to = "https://kryossecuritygroup.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://kryosaccesssystems.com/*"
+  to = "https://kryossecuritygroup.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.kryosaccesssystems.com/*"
+  to = "https://kryossecuritygroup.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.kryosaccesssystems.com/*"
+  to = "https://kryossecuritygroup.com/:splat"
+  status = 301
+  force = true
