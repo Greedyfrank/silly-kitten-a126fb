@@ -10,6 +10,9 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>Kryos Access Systems</title>
+  <link rel="icon" type="image/png" href="kryos-logo-mark.png" />
+  <link rel="apple-touch-icon" href="kryos-logo-mark.png" />
+  <meta property="og:image" content="kryos-logo-horizontal.png" />
   <style>
     :root {
       --bg: #0d0d10;
@@ -86,13 +89,15 @@
     .brand-mark {
       width: 48px;
       height: 48px;
-      border-radius: 14px;
       display: grid;
       place-items: center;
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
-      border: 1px solid rgba(201,169,97,0.35);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 30px rgba(0,0,0,0.35);
       flex-shrink: 0;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .brand-copy {
@@ -449,6 +454,72 @@
       gap: 1rem;
     }
 
+    .apps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 1rem;
+    }
+
+    .app-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 0;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .app-card:hover,
+    .app-card:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(201,169,97,0.45);
+    }
+
+    .app-thumb {
+      aspect-ratio: 1 / 1;
+      background: #0f1014;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .app-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .app-body {
+      padding: 1.1rem 1.2rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      flex: 1;
+    }
+
+    .app-body h3 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .app-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .app-open {
+      margin-top: auto;
+      padding-top: 0.6rem;
+      color: var(--gold);
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .industry {
       text-align: center;
       padding: 1.15rem 0.9rem;
@@ -566,7 +637,8 @@
       .contact-grid,
       .cards,
       .process,
-      .industries {
+      .industries,
+      .apps {
         grid-template-columns: 1fr 1fr;
       }
 
@@ -600,6 +672,7 @@
       .process,
       .contact-grid,
       .industries,
+      .apps,
       .check-grid {
         grid-template-columns: 1fr;
       }
@@ -633,11 +706,7 @@
     <div class="container nav">
       <a class="brand" href="#top" aria-label="Kryos Access Systems home">
         <div class="brand-mark" aria-hidden="true">
-          <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation">
-            <path d="M50 6L88 28V72L50 94L12 72V28L50 6Z" stroke="#C9A961" stroke-width="6"/>
-            <path d="M33 26V74" stroke="#C9A961" stroke-width="8" stroke-linecap="round"/>
-            <path d="M65 28L41 50L65 72" stroke="#C9A961" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <img src="kryos-logo-mark.png" alt="" />
         </div>
         <div class="brand-copy">
           <strong>Kryos</strong>
@@ -648,6 +717,7 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="#services">Services</a>
         <a href="#solutions">Solutions</a>
+        <a href="#apps">Apps</a>
         <a href="#process">Process</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -822,6 +892,61 @@
       </div>
     </section>
 
+    <section id="apps">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Apps</h2>
+          </div>
+          <p>
+            Purpose-built tools developed alongside Kryos projects — vault, command, field operations, and secure storage platforms accessible from anywhere.
+          </p>
+        </div>
+        <div class="apps">
+          <a class="app-card" href="https://iron-vault-guard.base44.app" target="_blank" rel="noopener noreferrer">
+            <div class="app-thumb">
+              <img src="app-iron-vault-guard.png" alt="IronVault preview" loading="lazy" />
+            </div>
+            <div class="app-body">
+              <h3>IronVault</h3>
+              <p>Credential and asset vault for secure storage and retrieval.</p>
+              <span class="app-open">Open →</span>
+            </div>
+          </a>
+          <a class="app-card" href="https://m4000-logic-link.base44.app" target="_blank" rel="noopener noreferrer">
+            <div class="app-thumb">
+              <img src="app-m4000-logic-link.png" alt="M4000 Command preview" loading="lazy" />
+            </div>
+            <div class="app-body">
+              <h3>M4000 Command</h3>
+              <p>Operations console for M4000 access control environments.</p>
+              <span class="app-open">Open →</span>
+            </div>
+          </a>
+          <a class="app-card" href="https://fieldforce.base44.app" target="_blank" rel="noopener noreferrer">
+            <div class="app-thumb">
+              <img src="app-fieldforce.png" alt="fieldForce preview" loading="lazy" />
+            </div>
+            <div class="app-body">
+              <h3>fieldForce</h3>
+              <p>Field workforce coordination for technicians and service calls.</p>
+              <span class="app-open">Open →</span>
+            </div>
+          </a>
+          <a class="app-card" href="https://secure-vault-1138f6e0.base44.app" target="_blank" rel="noopener noreferrer">
+            <div class="app-thumb">
+              <img src="app-secure-vault.png" alt="Shadow Grid preview" loading="lazy" />
+            </div>
+            <div class="app-body">
+              <h3>Shadow Grid</h3>
+              <p>Encrypted document and record vault for sensitive files.</p>
+              <span class="app-open">Open →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section id="process">
       <div class="container">
         <div class="section-heading">
@@ -917,11 +1042,7 @@
     <div class="container footer-row">
       <div class="brand" aria-label="Kryos Access Systems footer brand">
         <div class="brand-mark" aria-hidden="true">
-          <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation">
-            <path d="M50 6L88 28V72L50 94L12 72V28L50 6Z" stroke="#C9A961" stroke-width="6"/>
-            <path d="M33 26V74" stroke="#C9A961" stroke-width="8" stroke-linecap="round"/>
-            <path d="M65 28L41 50L65 72" stroke="#C9A961" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <img src="kryos-logo-mark.png" alt="" />
         </div>
         <div class="brand-copy">
           <strong>Kryos</strong>
