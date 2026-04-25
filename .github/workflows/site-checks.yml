@@ -1,0 +1,56 @@
+name: Site Checks
+
+on:
+  push:
+    branches:
+      - main
+      - 'codex/**'
+  pull_request:
+
+jobs:
+  validate-static-site:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Lint HTML files
+        run: npx --yes htmlhint "*.html"
+
+      - name: Verify local asset references
+        run: |
+          python - <<'PY'
+          import pathlib
+          import re
+          import sys
+
+          root = pathlib.Path(".")
+          html_files = sorted(root.glob("*.html"))
+          pattern = re.compile(r'''(?:href|src)=["']([^"']+)["']''', re.IGNORECASE)
+          skip_prefixes = ("http://", "https://", "mailto:", "tel:", "#", "data:")
+          missing = []
+
+          for html_file in html_files:
+              text = html_file.read_text(encoding="utf-8")
+              for raw in pattern.findall(text):
+                  if raw.startswith(skip_prefixes):
+                      continue
+                  path = raw.split("?", 1)[0].split("#", 1)[0]
+                  if not path:
+                      continue
+                  target = (root / path).resolve()
+                  if not target.exists():
+                      missing.append(f"{html_file}: missing {raw}")
+
+          if missing:
+              print("\n".join(missing))
+              sys.exit(1)
+
+          print(f"Validated {len(html_files)} HTML files and their local asset references.")
+          PY
