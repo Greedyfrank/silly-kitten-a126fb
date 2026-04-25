@@ -152,6 +152,7 @@
 
     .hero {
       padding: 5.5rem 0 4rem;
+      position: relative;
     }
 
     .hero-grid {
@@ -350,6 +351,21 @@
       max-width: 58ch;
     }
 
+    #visuals,
+    #biometrics {
+      position: relative;
+    }
+
+    #visuals::before,
+    #biometrics::before {
+      content: "";
+      position: absolute;
+      inset: 2rem 0 auto;
+      height: 260px;
+      background: radial-gradient(circle at center, rgba(201,169,97,0.08), transparent 68%);
+      pointer-events: none;
+    }
+
     .cards {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -434,7 +450,7 @@
 
     .industries {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0,1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 1rem;
     }
 
@@ -502,6 +518,101 @@
       font-size: 0.88rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+
+    .media-showcase {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .media-showcase-wide {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .media-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .media-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7,8,10,0.02) 0%, rgba(7,8,10,0.06) 48%, rgba(7,8,10,0.28) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .media-card:hover,
+    .media-card:focus-within {
+      transform: translateY(-4px);
+      border-color: rgba(201,169,97,0.34);
+      box-shadow: 0 22px 48px rgba(0,0,0,0.42);
+    }
+
+    .media-card img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: center;
+      border-bottom: 1px solid var(--line);
+      transform: scale(1.01);
+      transition: transform 0.45s ease;
+    }
+
+    .media-card-large img {
+      aspect-ratio: 16 / 9;
+    }
+
+    .media-card:hover img,
+    .media-card:focus-within img {
+      transform: scale(1.045);
+    }
+
+    .media-copy {
+      position: relative;
+      z-index: 2;
+      padding: 1.2rem 1.25rem 1.35rem;
+    }
+
+    .media-kicker {
+      display: inline-block;
+      margin-bottom: 0.7rem;
+      color: var(--gold);
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .media-copy h3 {
+      margin: 0 0 0.55rem;
+      font-size: clamp(1.18rem, 2vw, 1.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      max-width: 18ch;
+    }
+
+    .media-copy p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 52ch;
+    }
+
+    .media-card-large .media-copy {
+      padding-bottom: 1.55rem;
+    }
+
+    .media-card-large .media-copy h3 {
+      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+      max-width: 16ch;
     }
 
     .industry {
@@ -622,7 +733,9 @@
       .cards,
       .process,
       .industries,
-      .apps {
+      .apps,
+      .media-showcase,
+      .media-showcase-wide {
         grid-template-columns: 1fr 1fr;
       }
 
@@ -640,13 +753,38 @@
       .nav-links {
         width: 100%;
         flex-wrap: wrap;
-        gap: 1rem;
-        justify-content: space-between;
+        gap: 0.7rem 0.4rem;
+        justify-content: center;
         font-size: 0.9rem;
+      }
+
+      .nav-links a {
+        flex: 0 1 calc(33.333% - 0.3rem);
+        text-align: center;
       }
 
       .hero {
         padding-top: 3.5rem;
+      }
+
+      .media-card,
+      .media-card:hover,
+      .media-card:focus-within {
+        transform: none;
+      }
+
+      .media-card img,
+      .media-card:hover img,
+      .media-card:focus-within img {
+        transform: none;
+      }
+
+      .media-copy {
+        padding: 1rem 1rem 1.15rem;
+      }
+
+      .media-copy h3 {
+        max-width: none;
       }
 
       .hero-grid,
@@ -657,7 +795,9 @@
       .contact-grid,
       .industries,
       .apps,
-      .check-grid {
+      .check-grid,
+      .media-showcase,
+      .media-showcase-wide {
         grid-template-columns: 1fr;
       }
 

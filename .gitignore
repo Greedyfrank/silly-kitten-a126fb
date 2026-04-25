@@ -1,0 +1,5 @@
+.netlify/
+tmp/
+brochure_unzipped/
+*.pptx
+pdf-preview-page1.png
