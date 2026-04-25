@@ -33,7 +33,7 @@ if (contactForm) {
     window.location.assign(destination);
   } catch (error) {
     button.textContent = original;
-    status.textContent = 'We could not send your request. Please try again or email info@kryosaccess.com.';
+    status.textContent = 'We could not send your request. Please try again or email info@kryossecuritygroup.com.';
   } finally {
     if (button.textContent !== 'Demo request received') {
       button.disabled = false;
