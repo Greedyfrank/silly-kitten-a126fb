@@ -237,13 +237,15 @@
 
     .hero-card {
       position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
       padding: 1.4rem;
       border-radius: 28px;
       background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
       border: 1px solid rgba(255,255,255,0.08);
       box-shadow: var(--shadow);
       overflow: hidden;
-      min-height: 560px;
     }
 
     .hero-card::before {
@@ -257,8 +259,9 @@
     }
 
     .system-window {
-      position: absolute;
-      inset: 1.25rem 1.25rem auto 1.25rem;
+      position: relative;
+      inset: auto;
+      z-index: 1;
       padding: 1rem;
       border-radius: 22px;
       background: linear-gradient(180deg, rgba(12,13,16,0.95), rgba(20,22,28,0.94));
@@ -309,10 +312,10 @@
     }
 
     .hero-badge {
-      position: absolute;
-      right: 1.4rem;
-      bottom: 1.4rem;
-      width: min(100%, 300px);
+      position: relative;
+      z-index: 1;
+      align-self: flex-end;
+      width: min(100%, 320px);
       padding: 1rem;
       border-radius: 20px;
       background: linear-gradient(180deg, rgba(201,169,97,0.14), rgba(201,169,97,0.05));
@@ -768,7 +771,7 @@
       }
 
       .hero-card {
-        min-height: 500px;
+        gap: 1rem;
       }
     }
 
@@ -841,12 +844,10 @@
 
       .hero-card {
         min-height: auto;
-        padding-bottom: 13rem;
       }
 
       .hero-badge {
-        left: 1.25rem;
-        right: 1.25rem;
+        align-self: stretch;
         width: auto;
       }
     }
