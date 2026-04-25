@@ -1,6 +1,9 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
-document.getElementById('contactForm').addEventListener('submit', async function (event) {
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async function (event) {
   event.preventDefault();
 
   const form = event.currentTarget;
@@ -8,6 +11,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
   const status = document.getElementById('formStatus');
   const original = button.textContent;
   const formData = new FormData(form);
+  const destination = form.getAttribute('action') || '/';
 
   button.textContent = 'Sending...';
   button.disabled = true;
@@ -25,8 +29,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
     }
 
     button.textContent = 'Demo request received';
-    status.textContent = 'Your request was sent successfully. We will follow up soon.';
-    form.reset();
+    status.textContent = 'Your request was sent successfully. Redirecting...';
+    window.location.assign(destination);
   } catch (error) {
     button.textContent = original;
     status.textContent = 'We could not send your request. Please try again or email info@kryosaccess.com.';
@@ -35,10 +39,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
       button.disabled = false;
       return;
     }
-
-    setTimeout(function () {
-      button.textContent = original;
-      button.disabled = false;
-    }, 2200);
   }
-});
+  });
+}
