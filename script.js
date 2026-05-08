@@ -1,5 +1,21 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// FAQ accordion
+document.querySelectorAll('.faq-toggle').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var card = btn.closest('.faq-card');
+    var isOpen = card.classList.contains('is-open');
+    document.querySelectorAll('.faq-card').forEach(function(c) {
+      c.classList.remove('is-open');
+      c.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      card.classList.add('is-open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
